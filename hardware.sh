@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# This script creates file hardware.out where the information about your current sistem is listed.
+# author: Serhii itrainik@gmail.com
+# 
+
 MotherboardMN=""
 MotherboardPN=""
 
