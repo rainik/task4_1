@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# This script creates file hardware.out where the information about your current sistem is listed.
-# author: Serhii itrainik@gmail.com
-# 
-
 MotherboardMN=""
 MotherboardPN=""
 
@@ -36,5 +32,5 @@ Uptime: $(uptime -p | awk -F ',' '{print $1,$2}' | sed 's/^up//'| sed 's/^[ \t]*
 Processes running: $(ps -ax | wc -l)
 Users logged in: $(who | wc -l)
 --- Network ---
-$(ip -br a | awk '{if ($3=="") print $1,":","-"; else print $1,":",$3}' | sed 's/ :/:/')
+$(ip -br a | awk '{if ($3=="") print $1,"-"; else print $1,substr($0, index($0,$3))}' | sed 's/ /, /g;s/,/:/' | rev | awk '{if ($1=="-") print $1,substr($0,index($0,2)); else print substr($0, index($0,$2))}' | rev | sed 's/.$//')
 EOF
