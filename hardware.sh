@@ -27,7 +27,7 @@ System Serial Number: $(dmidecode -s system-serial-number | sed 's/^[ \t]*//;s/[
 OS distribution: $(cat /etc/issue.net | sed 's/^[ \t]*//;s/[ \t]*$//')
 Kernel version: $(uname -a | awk '{print $3}' | sed 's/^[ \t]*//;s/[ \t]*$//')
 Installation date: $(ls -alct / | tail -1 | awk '{print $6, $7, $8}' | sed 's/^[ \t]*//;s/[ \t]*$//')
-Hostname: $(hostname | sed 's/^[ \t]*//;s/[ \t]*$//')
+Hostname: $(hostname -f | sed 's/^[ \t]*//;s/[ \t]*$//')
 Uptime: $(uptime -p | awk -F ',' '{print $1,$2}' | sed 's/^up//'| sed 's/^[ \t]*//;s/[ \t]*$//')
 Processes running: $(ps -ax | wc -l)
 Users logged in: $(who | wc -l)
